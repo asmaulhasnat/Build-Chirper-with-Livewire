@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Livewire\Volt\Component;
 
 new class extends Component {
+    
     public Collection $chirps;
      
     public ?Chirp $editing = null; 
@@ -20,6 +21,13 @@ new class extends Component {
         $this->chirps = Chirp::with('user')
             ->latest()
             ->get();
+    }
+
+    public function edit(Chirp $chirp): void
+    {
+        $this->editing = $chirp;
+ 
+        $this->getChirps();
     }
 
     #[On('chirp-edit-canceled')]

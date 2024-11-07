@@ -1,19 +1,14 @@
 <?php
 
 use Livewire\Volt\Component;
+use App\Models\Chirp; 
+use Livewire\Attributes\Validate; 
 
 new class extends Component {
     public Chirp $chirp; 
- 
+    #[Validate('required|string|max:255')]
     public string $message = '';
-
-    public function rules()
-    {
-        return [
-            'message' => 'required|string|max:255',  // Adjust these rules as needed
-        ];
-    }
-
+    
     public function mount(): void
     {
         $this->message = $this->chirp->message;

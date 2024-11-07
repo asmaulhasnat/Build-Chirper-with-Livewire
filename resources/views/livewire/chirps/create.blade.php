@@ -1,17 +1,16 @@
 <?php
  
 use Livewire\Volt\Component;
+use Livewire\Attributes\Validate; 
+
  
 new class extends Component
-{
+{   
 
-    public function rules()
-    {
-        return [
-            'message' => 'required|string|max:255',  // Adjust these rules as needed
-        ];
-    }
+    #[Validate('required|string|max:255')]
     public string $message = '';
+
+   
  
     public function store(): void
     {
